@@ -33,7 +33,8 @@ class AssistantFunction(agents.llm.FunctionContext):
         ],
     ):
         print(f"Message triggering vision capabilities: {user_msg}")
-        return None
+        # context = AssistantContext.get_current()
+        # context.store_metadata("user_msg", user_msg)
 
 
 async def get_video_track(room: rtc.Room):
