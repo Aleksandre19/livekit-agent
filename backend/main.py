@@ -19,8 +19,13 @@ class AssistantFunction(agents.llm.FunctionContext):
 
     @agents.llm.ai_callable(
         description=(
-            "Called when asked to evaluate something that would require vision capabilities,"
-            "for example, an image, video, or the webcam feed."
+            "This function should be called whenever visual analysis is required. "
+            "Specifically, use this function when:"
+            "\n1. The user asks to describe, analyze, or evaluate an image."
+            "\n2. The user refers to something visual in their query (e.g., 'What do you see?', 'Can you describe the room?')."
+            "\n3. The user's question implies the need for visual information (e.g., 'What am I wearing?', 'How many people are here?')."
+            "\n4. Any task that requires processing the current video feed or a static image."
+            "\nThe function will capture and analyze the latest frame from the video input for these purposes."
         )
     )
     async def image(
