@@ -1,7 +1,9 @@
+import '@radix-ui/themes/styles.css';
 import '../styles/globals.css';
 import '@livekit/components-styles';
 import '@livekit/components-styles/prefabs';
 import type { Metadata, Viewport } from 'next';
+import { Theme } from '@radix-ui/themes';
 
 export const metadata: Metadata = {
   title: {
@@ -49,7 +51,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="night">
       <body>{children}</body>
     </html>
   );
