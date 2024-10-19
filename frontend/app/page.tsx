@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { Suspense, useState } from 'react';
 import { encodePassphrase, generateRoomId, randomString } from '@/lib/client-utils';
 import styles from '../styles/Home.module.css';
+import '@/styles/globals.css';
 
 function Tabs(props: React.PropsWithChildren<{}>) {
   const searchParams = useSearchParams();
@@ -18,7 +19,7 @@ function Tabs(props: React.PropsWithChildren<{}>) {
   let tabs = React.Children.map(props.children, (child, index) => {
     return (
       <button
-        className="lk-button"
+        className="bg-blue-500 text-white px-4 py-2 rounded-md"
         onClick={() => {
           if (onTabSelected) {
             onTabSelected(index);
@@ -165,6 +166,7 @@ export default function Page() {
     <>
       <main className={styles.main} data-lk-theme="default">
         <div className="header">
+          <p className="text-2xl font-bold text-blue-800">Testing tailwind</p>
           <img src="/images/livekit-meet-home.svg" alt="LiveKit Meet" width="360" height="45" />
           <h2>
             Open source video conferencing app built on{' '}
