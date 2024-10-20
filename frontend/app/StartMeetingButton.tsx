@@ -10,7 +10,11 @@ const StartMeetingButton = () => {
   const startMeeting = () => {
     router.push(`/rooms/${generateRoomId()}`);
   };
-  return <Button onClick={startMeeting}>Start Meeting</Button>;
+  return (
+    <Button className="btn btn-primary" onClick={startMeeting}>
+      Start Meeting
+    </Button>
+  );
 };
 
 export default StartMeetingButton;

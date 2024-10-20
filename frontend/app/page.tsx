@@ -1,10 +1,16 @@
 import '@/styles/globals.css';
-import StartMeetingButton from './StartMeetingButton';
+import { Box, Container, Theme } from '@radix-ui/themes';
+import VideoBg from './VideoBg';
 
 export default function Page() {
   return (
-    <div>
-      <StartMeetingButton />
-    </div>
+    <Theme>
+      <Box className="home-container">
+        <VideoBg />
+        <Container size="3" className="content">
+          Content
+        </Container>
+      </Box>
+    </Theme>
   );
 }
