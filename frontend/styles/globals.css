@@ -90,6 +90,7 @@ h2 a {
   position: relative;
   z-index: 1;
   color: white;
+  height: 100vh;
 }
 
 .home-container::before {
