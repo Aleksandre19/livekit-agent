@@ -1,12 +1,17 @@
 import '@/styles/globals.css';
 import { Box, Container, Flex, Heading, Text, Theme } from '@radix-ui/themes';
-import { getServerSession } from 'next-auth';
+import { getServerSession, Session } from 'next-auth';
 import AuthOptions from './auth/AuthOptions';
 import VideoBg from './VideoBg';
 import { ProvidersButton } from './components';
+import { redirect } from 'next/navigation';
+import { generateRoomId } from '@/lib/client-utils';
 
 export default async function Page() {
-  const session = await getServerSession(AuthOptions);
+  const session = (await getServerSession(AuthOptions)) as Session | null;
+
+  // Redirect to room if user is logged in
+  if (session) redirect(`/rooms/${generateRoomId()}`);
 
   return (
     <Theme>
@@ -40,7 +45,7 @@ export default async function Page() {
                   as="h2"
                   className="card-title mt-5 tracking-wide justify-center font-normal text-gray-200"
                 >
-                  {session ? session.user?.name : 'Please Sign In/Up to Continue'}
+                  {(session as Session | null)?.user?.name ?? 'Please Sign In/Up to Continue'}
                 </Heading>
                 <Box className="card-body">
                   <ProvidersButton />
