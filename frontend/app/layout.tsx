@@ -4,6 +4,7 @@ import '@livekit/components-styles';
 import '@livekit/components-styles/prefabs';
 import type { Metadata, Viewport } from 'next';
 import { Theme } from '@radix-ui/themes';
+import AuthProvider from './auth/Provider';
 
 // export const metadata: Metadata = {
 //   title: {
@@ -52,7 +53,9 @@ import { Theme } from '@radix-ui/themes';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-theme="night">
-      <body>{children}</body>
+      <body>
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

@@ -1,11 +1,13 @@
 import '@/styles/globals.css';
 import { Box, Container, Flex, Heading, Text, Theme } from '@radix-ui/themes';
-import ProvidersButton from './ProvidersButton';
+import { getServerSession } from 'next-auth';
+import AuthOptions from './auth/AuthOptions';
 import VideoBg from './VideoBg';
-import { getProviders } from 'next-auth/react';
+import { ProvidersButton } from './components';
 
 export default async function Page() {
-  const providers = await getProviders();
+  const session = await getServerSession(AuthOptions);
+
   return (
     <Theme>
       <Box className="home-container">
@@ -33,15 +35,15 @@ export default async function Page() {
                   creative solutions while speaking in your own comfortable way.
                 </Text>
               </Box>
-              <Box className="card bg-slate-900/70 shadow-xl">
+              <Box className="card backdrop-brightness-110 backdrop-invert backdrop-blur-sm bg-slate-900/70 min-w-80">
                 <Heading
                   as="h2"
                   className="card-title mt-5 tracking-wide justify-center font-normal text-gray-200"
                 >
-                  Please Sign In/Up to Continue
+                  {session ? session.user?.name : 'Please Sign In/Up to Continue'}
                 </Heading>
                 <Box className="card-body">
-                  <ProvidersButton providers={providers} />
+                  <ProvidersButton />
                 </Box>
               </Box>
             </Flex>
