@@ -6,7 +6,7 @@ import React from 'react';
 const GoogleProviderButton = ({ provider }: { provider: ClientSafeProvider }) => {
   return (
     <button
-      className="btn btn-primary btn-lg btn-wide text-white p-0"
+      className="btn btn-primary hover:bg-indigo-500 btn-lg btn-wide text-white p-0"
       onClick={() => signIn(provider.id)}
     >
       <>

@@ -5,6 +5,7 @@ import { ClientSafeProvider, getProviders } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import GoogleProviderButton from './GoogleProviderButton';
 import GutHubProviderButton from './GutHubProviderButton';
+import LinkedInProviderButton from './LinkedInProviderButton';
 
 const ProvidersButton = () => {
   const [providers, setProviders] = useState<Record<string, ClientSafeProvider> | null>(null);
@@ -27,6 +28,7 @@ const ProvidersButton = () => {
           <div key={provider.name}>
             {provider.name === 'Google' && <GoogleProviderButton provider={provider} />}
             {provider.name === 'GitHub' && <GutHubProviderButton provider={provider} />}
+            {provider.name === 'LinkedIn' && <LinkedInProviderButton provider={provider} />}
           </div>
         ))}
     </>
